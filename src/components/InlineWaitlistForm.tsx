@@ -15,7 +15,7 @@ function isValidEmail(value: string) {
 
 export function InlineWaitlistForm({
   className = "",
-  align = "left",
+  align = "center",
   caption = "Get early access before Toronto Tech Week.",
   platform = "web",
 }: InlineWaitlistFormProps) {
@@ -85,8 +85,8 @@ export function InlineWaitlistForm({
   }
 
   return (
-    <form onSubmit={handleSubmit} className={`w-full max-w-2xl ${className}`} aria-label="Serendipity waitlist form">
-      <div className="flex flex-col gap-3 rounded-2xl border border-[var(--color-surface-700)] bg-black/30 p-3 backdrop-blur-sm sm:flex-row sm:items-center">
+    <form onSubmit={handleSubmit} className={`w-full max-w-xl ${className}`} aria-label="Serendipity waitlist form">
+      <div className="flex items-center gap-3 rounded-full border border-white/12 bg-[var(--color-surface-900)]/55 py-[6px] pl-5 pr-[8px] backdrop-blur-sm">
         <input
           type="email"
           placeholder="you@company.com"
@@ -98,14 +98,14 @@ export function InlineWaitlistForm({
               setMessage(null);
             }
           }}
-          className="h-12 min-w-0 flex-1 appearance-none rounded-xl border border-white/8 bg-[var(--color-surface-900)] px-4 text-base text-[var(--color-text-primary)] outline-none placeholder:text-[var(--color-text-muted)]/80 focus:border-[var(--color-accent-400)]"
+          className="h-10 min-w-0 flex-1 appearance-none border-0 bg-transparent px-0 text-base leading-none text-[var(--color-text-primary)] outline-none placeholder:text-[var(--color-text-muted)]/75"
           disabled={isLoading || isJoined}
           aria-invalid={status === "error"}
         />
         <button
           type="submit"
           disabled={isLoading || isJoined}
-          className="h-12 shrink-0 rounded-xl bg-[var(--color-accent-400)] px-6 text-base font-semibold text-[var(--color-surface-950)] transition-all duration-200 hover:bg-[var(--color-accent-500)] disabled:cursor-default disabled:opacity-100"
+          className="h-10 min-w-[8.1rem] shrink-0 rounded-full bg-[var(--color-accent-400)] px-5 text-sm font-semibold leading-none text-[var(--color-surface-950)] transition-colors duration-200 hover:bg-[var(--color-accent-500)] disabled:cursor-default disabled:opacity-100"
         >
           {isJoined ? "Joined" : isLoading ? "Joining..." : "Join waitlist"}
         </button>

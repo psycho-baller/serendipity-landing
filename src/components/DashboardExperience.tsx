@@ -1,14 +1,17 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 import { DayTimeline } from "./DayTimeline";
 import { EventDetailPanel } from "./EventDetailPanel";
+import { MapView } from "./MapView";
 import { PeopleExplorer } from "./PeopleExplorer";
 import { PersonModal } from "./PersonModal";
 import { ScheduleView } from "./ScheduleView";
 import { StatsBar } from "./StatsBar";
+import logo from "../assets/just-serendipity-logo.svg";
 import { useEventData } from "../hooks/useEventData";
 
-type Tab = "timeline" | "people" | "schedule";
+type Tab = "timeline" | "people" | "schedule" | "map";
 
 export function DashboardExperience() {
   const { data, getEvent, getPerson } = useEventData();
@@ -23,23 +26,35 @@ export function DashboardExperience() {
     { key: "timeline", label: "Timeline", icon: "📅" },
     { key: "people", label: "People", icon: "👥" },
     { key: "schedule", label: "My Schedule", icon: "✓" },
+    { key: "map", label: "Map", icon: "🗺️" },
   ];
 
   return (
     <div className="app-bg bg-[var(--color-surface-950)]">
+      <div className="border-b border-[var(--color-accent-400)]/20 bg-[var(--color-accent-bg)]/40">
+        <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-6 py-2">
+          <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-[var(--color-accent-400)]">
+            demo mode — sample names and avatars only
+          </p>
+          <Link
+            to="/"
+            className="shrink-0 font-mono text-[11px] uppercase tracking-[0.16em] text-[var(--color-text-secondary)] transition-colors hover:text-[var(--color-text-primary)]"
+          >
+            back to landing
+          </Link>
+        </div>
+      </div>
       <header className="sticky top-0 z-30 border-b border-white/5 bg-[var(--color-surface-950)]/90 backdrop-blur-md">
         <div className="mx-auto max-w-6xl px-6">
           <div className="flex h-16 items-center justify-between">
             <div className="flex items-center gap-3">
-              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-[var(--color-accent-400)] text-sm font-bold text-[var(--color-surface-950)]">
-                SI
-              </div>
+              <img src={logo} alt="Serendipity logo" className="h-8 w-8 rounded-lg object-cover" />
               <div>
                 <h1 className="text-base font-semibold text-[var(--color-text-primary)]">
-                  Serendipity Intelligence
+                  Serendipity
                 </h1>
                 <p className="mt-0.5 font-mono text-xs text-[var(--color-text-muted)]">
-                  Toronto Tech Week / 2026
+                  Toronto Tech Week / 2026 demo
                 </p>
               </div>
             </div>
@@ -90,6 +105,12 @@ export function DashboardExperience() {
         {activeTab === "schedule" && (
           <div className="animate-fade-in">
             <ScheduleView />
+          </div>
+        )}
+
+        {activeTab === "map" && (
+          <div className="animate-fade-in">
+            <MapView onSelectEvent={setSelectedEventId} />
           </div>
         )}
       </main>
