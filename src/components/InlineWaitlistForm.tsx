@@ -89,7 +89,7 @@ export function InlineWaitlistForm({
       <div className="flex items-center gap-3 rounded-full border border-white/12 bg-[var(--color-surface-900)]/55 py-[6px] pl-5 pr-[8px] backdrop-blur-sm">
         <input
           type="email"
-          placeholder="your@email.com"
+          placeholder="you@company.com"
           value={email}
           onChange={(event) => {
             setEmail(event.target.value);
