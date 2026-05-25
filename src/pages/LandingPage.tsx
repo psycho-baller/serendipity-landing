@@ -1,5 +1,3 @@
-import { Link } from "react-router-dom";
-
 import { InlineWaitlistForm } from "../components/InlineWaitlistForm";
 import { StatsBar } from "../components/StatsBar";
 import logo from "../assets/just-serendipity-logo.svg";
@@ -7,6 +5,8 @@ import landingStats from "../data/landing-stats.json";
 import type { GlobalStats } from "../lib/types";
 
 const demoStats = landingStats as GlobalStats;
+const SITE_URL = "https://orbitlabs.studio/s";
+const DEMO_URL = "https://serendipity.orbitlabs.studio/demo";
 const REPO_URL = "https://github.com/psycho-baller/luma-enricher";
 
 export function LandingPage() {
@@ -14,7 +14,7 @@ export function LandingPage() {
     <div className="landing-shell">
       <header className="landing-header">
         <div className="mx-auto flex w-full max-w-6xl items-center justify-between px-6 py-4">
-          <div className="flex items-center gap-3">
+          <a href={SITE_URL} className="flex items-center gap-3">
             <img src={logo} alt="Serendipity logo" className="h-9 w-9 rounded-xl object-cover" />
             <div>
               <p className="text-sm font-semibold text-[var(--color-text-primary)]">Serendipity</p>
@@ -22,7 +22,7 @@ export function LandingPage() {
                 for Toronto Tech Week
               </p>
             </div>
-          </div>
+          </a>
           <div className="flex items-center gap-4">
             <p className="hidden font-mono text-[11px] uppercase tracking-[0.18em] text-[var(--color-text-muted)] md:block">
               private alpha
@@ -52,14 +52,14 @@ export function LandingPage() {
                 toronto tech week
               </p>
               <h1 className="mx-auto flex max-w-4xl flex-col gap-4 text-5xl leading-[0.95] font-semibold tracking-[-0.045em] text-[var(--color-text-primary)] md:gap-5 md:text-7xl">
-                <span>Engineering serendipity.</span>
+                <span>Engineering serendipity</span>
                 <span className="text-3xl font-medium leading-[1.05] tracking-[-0.03em] text-[var(--color-text-secondary)] md:text-4xl">
-                  Pick the events worth showing up to.
+                  Pick the events worth showing up to
                 </span>
               </h1>
               <p className="max-w-3xl text-lg leading-8 text-[var(--color-text-secondary)]">
                 Powered by your LinkedIn export. Serendipity matches event guest lists to your connections and
-                messages, then ranks what's worth your time.
+                messages, then ranks what's worth your time
               </p>
               <InlineWaitlistForm
                 align="center"
@@ -67,12 +67,12 @@ export function LandingPage() {
                 caption="Want early access? Leave your email. If 10 people sign up, I'll open it to the public."
               />
               <div className="flex flex-col items-center gap-3 sm:flex-row">
-                <Link
-                  to="/demo"
+                <a
+                  href={DEMO_URL}
                   className="w-full rounded-xl bg-[var(--color-accent-400)] px-5 py-3 text-center text-sm font-semibold uppercase tracking-[0.12em] text-[var(--color-surface-950)] transition-colors hover:bg-[var(--color-accent-500)] sm:w-auto"
                 >
                   try the demo
-                </Link>
+                </a>
                 <a
                   href={REPO_URL}
                   target="_blank"
